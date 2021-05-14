@@ -148,7 +148,8 @@ export default function Menu({navigation}) {
             AVISO
           </Text>
           <Text style={styles.Text} numberOfLines={5}>
-            <AutoLink>{mensagem}</AutoLink>
+            
+            <AutoLink>{mensagem ? mensagem : ''}</AutoLink>
           </Text>
         </View>
       </View>

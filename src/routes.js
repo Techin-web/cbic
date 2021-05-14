@@ -123,14 +123,14 @@ const MuralStack = createStackNavigator({
     screen: Mural,
     navigationOptions: {
       title: 'Publicações',
-      headerShown: false,
+      // headerShown: false,
     },
   },
   MuralDetails: {
     screen: MuralDetails,
     navigationOptions: {
       title: 'Publicações',
-      headerShown: false,
+      // headerShown: false,
     },
   },
 });
@@ -195,6 +195,7 @@ const MenuPages = createStackNavigator({
     screen: MuralStack,
     navigationOptions: {
       title: 'Publicações',
+      headerShown: false,
     },
   },
   RedesSociais: {

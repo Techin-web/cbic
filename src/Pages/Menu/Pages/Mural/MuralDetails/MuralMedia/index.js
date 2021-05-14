@@ -13,7 +13,12 @@ export default function MuralMedia(props) {
   let mediaItem;
 
   switch (file.mimetype) {
-    case 'image/png':
+    case 'image/http': 
+      mediaItem = (
+        <ImageItem filename={file.filename} /> 
+      );
+      break;
+    case 'image/png': 
       mediaItem = (
         <ImageItem baseURL={API_baseURLFiles} filename={file.filename} />
       );
