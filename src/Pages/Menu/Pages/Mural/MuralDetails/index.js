@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
     textAlign: 'justify'
   },
   MuralContainer: {
-    marginVertical: 30
+    marginVertical: 30,
+    height: 270
   }
 });

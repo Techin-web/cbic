@@ -5,10 +5,10 @@ import {getToken} from '../../../../../../../services/auth';
 export default function ImageItem(props) {
   const [token, setToken] = useState(null);
   useEffect(() => {
-    getCurrentToken();
+    getCurrentToken(); 
   }, []);
 
-  async function getCurrentToken() {
+  async function getCurrentToken() { 
     const currentToken = await getToken();
     setToken(currentToken);
   }
@@ -21,7 +21,7 @@ export default function ImageItem(props) {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }}
+      }}  
       style={styles.ImageItem}
     />
   );
@@ -29,7 +29,7 @@ export default function ImageItem(props) {
 
 const styles = StyleSheet.create({
   ImageItem: {
-    height: 270,
+    height: '100%',
     width: '100%',
   },
 });
