@@ -2,9 +2,30 @@ import React from 'react';
 import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import MuralMedia from './MuralMedia/index';
 import AutoLink from '../../../../../components/AutoLink';
+import Icon from 'react-native-vector-icons/FontAwesome';
+const allMonths = [
+  'Janeiro',
+  'Fevereiro',
+  'Março',
+  'Abril',
+  'Maio',
+  'Junho',
+  'Julho',
+  'Agosto',
+  'Setembro',
+  'Outubro',
+  'Novembro',
+  'Dezembro'
+];
 
 export default function MuralDetail({navigation}) {
   const event = navigation.state.params.event;
+  const date = new Date(`${event.updatedAt}`);
+  const day = date.getDate();
+  const month = date.getMonth();
+  const year = date.getFullYear();
+  const newDate = `${day} de ${allMonths[month]} de ${year}`;
+
   let content = event.eventdescription.replace('SAIBA MAIS', '');
   content = content.replace('COMPARTILHE!', '');
 
@@ -13,7 +34,11 @@ export default function MuralDetail({navigation}) {
       <View style={styles.Content}>
         <ScrollView contentContainerStyle={styles.ScrollView}>
           <Text style={styles.Title}>{event.eventname}</Text>
-          <View style={styles.MuralContainer}>
+          <View style={styles.DateContainer}>
+            <Icon name="calendar" style={styles.IconDate} />
+            <Text style={styles.Date}>{newDate}</Text>
+          </View>
+          <View style={ event.mimetype.includes('video/') ? styles.MuralContainerVideo : styles.MuralContainer }>
             <MuralMedia file={event} /> 
           </View>
           <Text style={styles.Description}>
@@ -56,11 +81,24 @@ const styles = StyleSheet.create({
   Description: {
     color: '#3F3F3F',
     fontSize: 18,
-    marginBottom: 30,
+    marginBottom: 50,
+    marginTop: 30,
     textAlign: 'justify'
   },
   MuralContainer: {
-    marginVertical: 30,
+    marginTop: 20,
     height: 270
-  }
+  },
+  MuralContainerVideo: {
+    marginTop: 60,
+  },
+  DateContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginTop: 10
+  },
+  IconDate: {
+    marginRight: 5,
+  },
 });
